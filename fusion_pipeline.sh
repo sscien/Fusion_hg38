@@ -22,6 +22,7 @@ STAR-Fusion --left_fq $fq_1 --right_fq $fq_2 --CPU $cpu --examine_coding_effect 
 rm STAR_FUSION/Aligned.out.bam
 rm -r STAR_FUSION/star-fusion.preliminary
 rm -r STAR_FUSION/_*
+gzip STAR_FUSION/Chimeric.out.junction
 
 # EricScript
 genome_db=/diskmnt/Projects/Users/dcui/Projects/Fusion_hg38/ericscript_dependencies/ericscript_db_homosapiens_ensembl84
@@ -52,7 +53,7 @@ rm -r STAR/star_STARtmp
 
 #Merge three tools
 mkdir -p Merged_Fusions
-perl /diskmnt/Projects/Users/dcui/Projects/Fusion_hg38/hg38_Scripts/combine_call.pl $sample STAR_FUSION/star-fusion.fusion_predictions.abridged.coding_effect.tsv ERICSCRIPT/${sample}.results.total.tsv Integrate/summary.tsv Integrate/breakpoints.tsv Merged_Fusions 1> logs/Merge.out 2> logs/Merge.err
+perl /diskmnt/Projects/Users/dcui/Projects/Fusion_hg38/hg38_Scripts/combine_call.pl $sample STAR_FUSION/star-fusion.fusion_predictions.abridged.coding_effect.tsv ERICSCRIPT/${sample}.results.total.tsv INTEGRATE/summary.tsv INTEGRATE/breakpoints.tsv Merged_Fusions 1> logs/Merge.out 2> logs/Merge.err
 
 #Filtering
 perl /diskmnt/Projects/Users/dcui/Projects/Fusion_hg38/hg38_Scripts/filter.pl Merged_Fusions $sample 1> logs/Filter.out 2> logs/Filter.err

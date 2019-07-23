@@ -1,10 +1,10 @@
 Daniel Cui Zhou
 daniel.cui@wustl.edu
-Last updated: 12/03/18
+Last updated: 07/23/19
 
 Adapted from Qingsong Gao's hg19 pipeline
 
-VERSION: v2.0
+VERSION: v2.2
 Build: hg38
 Cluster: katmai
 
@@ -43,3 +43,8 @@ Processing details:
 Run "makeDir.py" to create the appropriate folder directory for each sample.
 Run "to_run.sh" in order to submit tmux instances.
 Once it's all done, run "normalFilter.py" to remove normal fusions.
+
+v2.2 revision history:
+Fixed bug that basically ignored Integrate calls
+Automatically compresses large Star fusion file
+Added a copy any fusion script so we can provide normal calls too (no longer filtering germline by default)
