@@ -26,7 +26,7 @@ Get fusions reported by at least 2 callers or reported by STAR-Fusion (shows hig
 Then, remove fusions present in the filtering database, which includes:
 1) Uncharacterized genes, immunoglobin genes, mitochondrial genes, etc.
 2) Fusions from the same gene or paralog genes (downloaded from https://www.genenames.org/cgi-bin/statistics)
-3) Fusions reported in TCGA normal samples (from pancan fusion analysis, under review), GTEx tissues (reported in star-fusion output), and non-cancer cell studies (PMID: 26837576)
+3) Fusions reported in TCGA normal samples from pancan fusion analysis (PMID:29617662), GTEx tissues (reported in star-fusion output), and non-cancer cell studies (PMID: 26837576)
 
 Output format:
 In the output file, each row represents one fusion.
