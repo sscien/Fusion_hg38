@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-
+# Usage perl combine_call.pl SAMPLE STARFUSION ERICSCRIPT INTEGRATE_summary INTEGRATE_breakpoint OUTDIR\nFilterDB and STARDB are set to be static in the script
 use strict;
 use warnings;
 
