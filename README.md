@@ -1,8 +1,8 @@
-Daniel Cui Zhou
-daniel.cui@wustl.edu
-Last updated: 07/23/19
+Yizhe Song
+y.song@wustl.edu
+Last updated: 10/23/21
 
-Adapted from Qingsong Gao's hg19 pipeline
+Adapted from Dan Cui Zhou's hg38 pipeline and Qingsong Gao's hg19 pipeline
 
 VERSION: v2.2
 Build: hg38
