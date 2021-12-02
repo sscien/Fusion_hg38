@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# bash script to copy fusion results to txt and tsv file
 dir=$1
 target=$2
 
