@@ -6,5 +6,4 @@ https://github.com/suhrig/arriba
 https://arriba.readthedocs.io/en/latest/quickstart/
 3. STAR-Fusion
 https://www.biorxiv.org/content/10.1101/120295v1
-
 https://github.com/STAR-Fusion/STAR-Fusion
