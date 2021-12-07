@@ -4,3 +4,4 @@ https://www.sciencedirect.com/science/article/pii/S2405471221002076
 2. Arriba
 https://github.com/suhrig/arriba
 https://arriba.readthedocs.io/en/latest/quickstart/
+https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1842-9
