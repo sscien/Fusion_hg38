@@ -7,3 +7,7 @@ https://arriba.readthedocs.io/en/latest/quickstart/
 3. STAR-Fusion
 https://www.biorxiv.org/content/10.1101/120295v1
 https://github.com/STAR-Fusion/STAR-Fusion
+
+4.
+Accurate and efficient detection of gene fusions from RNA sequencing data
+https://genome.cshlp.org/content/31/3/448.full
