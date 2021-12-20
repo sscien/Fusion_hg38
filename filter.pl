@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# filter the fusions
+
 use strict;
 use warnings;
 
