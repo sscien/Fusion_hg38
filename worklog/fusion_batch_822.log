@@ -75,3 +75,10 @@ bash /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_822/c
 
 
 cp -r /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/RNA-Seq_Fusion.batch_0822_22 /storage1/fs1/dinglab/Active/Projects/ysong/Projects/cptac_jobs/cptac_fusion_analysis/
+
+
+#### Analysis summary ####
+
+/storage1/fs1/dinglab/Active/Projects/ysong/Projects/cptac_jobs/cptac_fusion_analysis/RNA-Seq_Fusion.batch_0822_22/RNA-Seq_Fusion.analysis_description_batch_2022_08_22.txt
+
+/storage1/fs1/dinglab/Active/Projects/ysong/Projects/cptac_jobs/cptac_fusion_analysis/RNA-Seq_Fusion.batch_0822_22/RNA-Seq_Fusion.analysis_summary_batch_2022_08_22.txt
