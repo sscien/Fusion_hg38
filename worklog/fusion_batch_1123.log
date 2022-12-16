@@ -1,0 +1,84 @@
+###
+/diskmnt/Projects/Users/ysong/project/cptac_analysis/batch_22_11_23/RNA-Seq_Fusion.run_list.tsv
+
+## 7 cases, 7 AML case
+
+## Manually create the input file
+
+cd /diskmnt/Projects/cptac_scratch/CPTAC3_analysis/Fusion_hg38/RNA-seq_Fusion.batch_1123_22
+wget https://raw.githubusercontent.com/ding-lab/CPTAC3.catalog/master/BamMap/katmai.BamMap.dat
+
+tmux
+conda activate Fusion
+
+
+cd /diskmnt/Projects/cptac_scratch/CPTAC3_analysis/Fusion_hg38/RNA-seq_Fusion.batch_1123_22
+python /diskmnt/Projects/cptac_scratch/CPTAC3_analysis/Fusion_hg38/RNA-seq_Fusion.batch_822/makeDir_v2.7_CPTAC.py RNA-Seq_Fusion.batch1123.input.tsv /diskmnt/Projects/cptac_scratch/CPTAC3_analysis/RNA-seq_Fusion.batch_1123_22
+
+exit
+ssh yosemite
+conda activate Fusion
+cd /diskmnt/Projects/cptac_scratch/CPTAC3_analysis/Fusion_hg38/RNA-seq_Fusion.batch_822
+bash /diskmnt/Projects/cptac_scratch/CPTAC3_analysis/Fusion_hg38/RNA-seq_Fusion.batch_822/toRun_tmux.sh
+
+tmux kill-session -t C3N-00689
+tmux kill-session -t C3N-01850
+tmux kill-session -t C3N-02788
+tmux kill-session -t GTEX-NPJ7-0011-R10A-SM-HAKXW
+tmux kill-session -t GTEX-P44H-0011-R10A-SM-HAKXX
+tmux kill-session -t GTEX-QVJO-0011-R10A-SM-HAKXV
+tmux kill-session -t GTEX-R55F-0011-R10A-SM-HAKXY
+tmux kill-session -t GTEX-RN5K-0011-R10A-SM-HAKXU
+tmux kill-session -t GTEX-RU72-0011-R10A-SM-HAKXS
+tmux kill-session -t GTEX-UTHO-0011-R10A-SM-HAKY2
+tmux kill-session -t GTEX-WVLH-0011-R10A-SM-HAKXZ
+tmux kill-session -t GTEX-Y8DK-0011-R10A-SM-HAKY1
+tmux kill-session -t PT-Q2AG
+
+C3N-00689: 1 windows (created Tue Aug 30 14:50:48 2022)
+C3N-01850: 1 windows (created Tue Aug 30 14:50:48 2022)
+C3N-02788: 1 windows (created Tue Aug 30 14:50:48 2022)
+GTEX-NPJ7-0011-R10A-SM-HAKXW: 1 windows (created Tue Aug 30 14:50:48 2022)
+GTEX-P44H-0011-R10A-SM-HAKXX: 1 windows (created Tue Aug 30 14:50:48 2022)
+GTEX-QVJO-0011-R10A-SM-HAKXV: 1 windows (created Tue Aug 30 14:50:48 2022)
+GTEX-R55F-0011-R10A-SM-HAKXY: 1 windows (created Tue Aug 30 14:50:48 2022)
+GTEX-RN5K-0011-R10A-SM-HAKXU: 1 windows (created Tue Aug 30 14:50:48 2022)
+GTEX-RU72-0011-R10A-SM-HAKXS: 1 windows (created Tue Aug 30 14:50:48 2022)
+GTEX-UTHO-0011-R10A-SM-HAKY2: 1 windows (created Tue Aug 30 14:50:48 2022)
+GTEX-WVLH-0011-R10A-SM-HAKXZ: 1 windows (created Tue Aug 30 14:50:48 2022)
+GTEX-Y8DK-0011-R10A-SM-HAKY1: 1 windows (created Tue Aug 30 14:50:48 2022)
+PT-Q2AG: 1 windows (created Tue Aug 30 14:50:48 2022)
+
+
+bash /diskmnt/Projects/GDAN_scratch/CPTAC_batch_822/copy_fastq.sh
+
+ssh c1
+scp -r ysong@katmai.wusm.wustl.edu:/diskmnt/Projects/GDAN_scratch/CPTAC_batch_822/ /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/
+
+
+convert to compute1
+
+####
+
+input =/scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/RNA-Seq_Fusion.batch_1123_22/
+
+cd /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/RNA-Seq_Fusion.batch_1123_22/
+python /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/RNA-Seq_Fusion.batch_1123_22/makeDir_v2.7_CPTAC.py RNA.Seq_Fusion.batch1123.input_compute1.txt /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/RNA-Seq_Fusion.batch_1123_22/
+
+cd /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/RNA-Seq_Fusion.batch_1123_22/
+
+export LSF_DOCKER_VOLUMES="$HOME:$HOME $STORAGE1_DINGLAB:$STORAGE1_DINGLAB $STORAGE1_MATT:$STORAGE1_MATT $SCRATCH1_DINGLAB:$SCRATCH1_DINGLAB"
+
+bsub -n 60 -N -u ysongwustl@gmail.com -oo /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_1123_22/WU_fusion_logs/fusion.out.%J.%I.log -eo /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_1123_22/WU_fusion_logs/fusion.err.%J.%I.log -q general -J 'CPTAC[1-7]' -g /compute-dinglab/MMRF -G compute-dinglab -M 70G -R 'select[mem>70G] rusage[mem=70G]' -a 'docker(songyizhe/fusion:2.6)' /bin/bash -c "/storage1/fs1/dinglab/Active/Projects/PECGS/PECGS_pipeline/Fusion/Fusion_hg38_scripts/fusion_pipeline_ris_v2_batch.sh /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_1123_22/work.list"
+
+bash /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_1123_22/copy_Fusion.sh /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_1123_22/ /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_1123_22/submission
+
+
+cp -r /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_1123_22 /storage1/fs1/dinglab/Active/Projects/ysong/Projects/cptac_jobs/cptac_fusion_analysis/
+
+
+#### Analysis summary ####
+
+/storage1/fs1/dinglab/Active/Projects/ysong/Projects/cptac_jobs/cptac_fusion_analysis/RNA-Seq_Fusion.batch_0822_22/RNA-Seq_Fusion.analysis_description_batch_2022_08_22.txt
+
+/storage1/fs1/dinglab/Active/Projects/ysong/Projects/cptac_jobs/cptac_fusion_analysis/RNA-Seq_Fusion.batch_0822_22/RNA-Seq_Fusion.analysis_summary_batch_2022_08_22.txt
