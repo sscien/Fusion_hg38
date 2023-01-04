@@ -71,10 +71,13 @@ export LSF_DOCKER_VOLUMES="$HOME:$HOME $STORAGE1_DINGLAB:$STORAGE1_DINGLAB $STOR
 
 bsub -n 60 -N -u ysongwustl@gmail.com -oo /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_1123_22/WU_fusion_logs/fusion.out.%J.%I.log -eo /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_1123_22/WU_fusion_logs/fusion.err.%J.%I.log -q general -J 'CPTAC[1-7]' -g /compute-dinglab/MMRF -G compute-dinglab -M 70G -R 'select[mem>70G] rusage[mem=70G]' -a 'docker(songyizhe/fusion:2.6)' /bin/bash -c "/storage1/fs1/dinglab/Active/Projects/PECGS/PECGS_pipeline/Fusion/Fusion_hg38_scripts/fusion_pipeline_ris_v2_batch.sh /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_1123_22/work.list"
 
-bash /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_1123_22/copy_Fusion.sh /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_1123_22/ /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_1123_22/submission
+
+bash /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/RNA-Seq_Fusion.batch_1123_22/copy_Fusion.sh /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/RNA-Seq_Fusion.batch_1123_22/ /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/RNA-Seq_Fusion.batch_1123_22/submission/
 
 
-cp -r /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/CPTAC_batch_1123_22 /storage1/fs1/dinglab/Active/Projects/ysong/Projects/cptac_jobs/cptac_fusion_analysis/
+cp -r /scratch1/fs1/dinglab/Active/Projects/ysong/cptac_scratch/RNA-Seq_Fusion.batch_1123_22/ /storage1/fs1/dinglab/Active/Projects/ysong/Projects/cptac_jobs/cptac_fusion_analysis/
+
+
 
 
 #### Analysis summary ####
